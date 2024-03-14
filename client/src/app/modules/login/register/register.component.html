@@ -1,0 +1,45 @@
+<form [formGroup]="registerForm">
+    <input type="text" id="name" formControlName="name" class="disabled"    >
+    <!-- <input type="text" formControlName="name" id="name" [value]="nameFromLogin" /> -->
+
+    <div>
+        <input type="text" formControlName="address" id="address" placeholder="address" />
+        <ng-container *ngIf="registerForm.controls['address'].errors 
+        &&(registerForm.controls['address'].touched||registerForm.controls['address'].dirty)">
+            <div *ngIf="registerForm.controls['address'].errors['required']">this field is required</div>
+        </ng-container>
+    </div>
+
+
+    <div>
+        <input type="email" formControlName="email" id="email" placeholder="email" />
+        <ng-container *ngIf="registerForm.controls['email'].errors 
+        &&(registerForm.controls['email'].touched||registerForm.controls['email'].dirty)">
+            <div *ngIf="registerForm.controls['email'].errors['required']">
+                this field is required
+            </div>
+            <div *ngIf="registerForm.controls['email'].errors['email']">
+                enter a correct email address
+            </div>
+        </ng-container>
+    </div>
+
+
+    <div>
+        <input type="password" formControlName="password" id="password" placeholder="password" />
+        <ng-container *ngIf="registerForm.controls['password'].errors 
+        &&(registerForm.controls['password'].touched||registerForm.controls['password'].dirty)">
+            <div *ngIf="registerForm.controls['password'].errors['required']">
+                this field is required
+            </div>
+            <div *ngIf="registerForm.controls['password'].errors['min']">
+                the password need to be at least 4 characters, add characters
+            </div>
+            <div *ngIf="registerForm.controls['password'].errors['max']">
+                the password need to be at most 8 characters, delete characters
+            </div>
+        </ng-container>
+    </div>
+
+</form>
+<button type="submit" (click)="functionAddUser()" [disabled]="registerForm.invalid">ADD</button>

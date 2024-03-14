@@ -1,0 +1,83 @@
+<form [formGroup]="addCourseForm">
+  <!-- <div>
+    <input matInput type="text" formControlName="courseName" id="courseName" placeholder="courseName"
+      class="white-text mat-input-element" />
+    <ng-container *ngIf="addCourseForm.controls['courseName'].errors 
+        &&(addCourseForm.controls['courseName'].touched||addCourseForm.controls['courseName'].dirty)">
+      <div *ngIf="addCourseForm.controls['courseName'].errors['required']">this field is required</div>
+    </ng-container>
+  </div> -->
+  <div class="mb-3">
+    <label for="name">Course Name</label>
+    <input type="text" formControlName="name" id="name" class="form-control" placeholder="Course Name">
+    <div *ngIf="addCourseForm.get('name')?.invalid && (addCourseForm.get('name')?.touched || addCourseForm.get('courseName')?.dirty)" class="invalid-feedback">
+      This field is required
+    </div>
+  </div>
+
+  <div>
+    <select formControlName="categoryId">
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+  </div>
+
+  
+  <div class="mb-3">
+    <label for="amountLessons">Lessons Amount</label>
+    <input type="number" formControlName="amountLessons" id="amountLessons" class="form-control" placeholder="Lessons Amount">
+    <div *ngIf="addCourseForm.get('amountLessons')?.invalid && (addCourseForm.get('amountLessons')?.touched || addCourseForm.get('lessonsAmount')?.dirty)" class="invalid-feedback">
+      This field is required
+    </div>
+  </div>
+
+  <mat-form-field class="white-frame" appearance="outline" [color]="'accent'">
+    <input matInput type="date" formControlName="startDateLearning" id="startDateLearning" placeholder="startDateLearning"
+      class="white-text mat-input-element" />
+  </mat-form-field>
+
+  <label for="syllabus">Syllabus:</label>
+  <div *ngFor="let item of syllabusItems; let i = index">
+      <input type="text" id="syllabus{{i}}" [value]="item" disabled>
+  </div>
+  
+  <div>
+      <label for="syllabus"></label>
+      <input type="text" id="syllabus" formControlName="syllabus" (input)="onSyllabusChange1()">
+  </div>
+  
+  <div *ngIf="notEmpty1">
+      <label></label>
+      <input type="text" id="syllabus" (input)="onSyllabusChange2()">
+  </div>
+
+  
+  <div>
+    <mat-label for="wayLearning">WAY LEARNING</mat-label>
+    <select formControlName="wayLearning">
+      <option name="wayLearning">zoom</option>
+      <option name="wayLearning">frontal</option>
+    </select>
+  </div>
+
+  <!-- <mat-form-field class="white-frame" appearance="outline" [color]="'accent'">
+    <input matInput type="text" formControlName="lecturerId" id="lecturerId" placeholder="lecturerId"
+      class="white-text mat-input-element" />
+  </mat-form-field> -->
+  
+  <mat-form-field class="white-frame" appearance="outline" [color]="'accent'">
+    <input matInput type="text" formControlName="imagePath" id="imagePath" placeholder="imagePath"
+      class="white-text mat-input-element" />
+  </mat-form-field>
+
+
+  <!-- <div>
+    <input matInput type="number" formControlName="lessonsAmount" id="lessonsAmount" placeholder="lessonsAmount"
+      class="white-text mat-input-element" />
+    <ng-container *ngIf="addCourseForm.controls['lessonsAmount'].errors 
+        &&(addCourseForm.controls['lessonsAmount'].touched||addCourseForm.controls['lessonsAmount'].dirty)">
+      <div *ngIf="addCourseForm.controls['lessonsAmount'].errors['required']">this field is required</div>
+    </ng-container>
+  </div> -->
+  
+</form>
+<button (click)="functionAddCourse()">ADD COURSE</button>

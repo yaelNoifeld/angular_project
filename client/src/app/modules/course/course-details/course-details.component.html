@@ -1,0 +1,15 @@
+<div>
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{courseDetails?.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="courseDetails?.imagePath" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>
+                <span *ngFor="let section of courseDetails?.syllabus">{{section}} </span>
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<button (click)="functionEditCourse()">ADD COURSE</button>

@@ -1,0 +1,69 @@
+<!-- <div class="wrapper">
+  <div class="login-text">
+    <p class="turquoise-text">LOGIN TO OUR COURSES</p>
+    <form [formGroup]="loginForm" class="form">
+      <mat-form-field class="white-frame" appearance="outline" [color]="'accent'">
+        <mat-label>USER NAME</mat-label>
+        <input matInput type="text" formControlName="userName" id="userName" placeholder="userName"
+          class="white-text mat-input-element"  />
+      </mat-form-field>
+      <mat-form-field class="white-frame" appearance="outline" [color]="'accent'">
+        <mat-label>PASSWORD</mat-label>
+        <input matInput type="password" formControlName="password" id="password" placeholder="password"
+          class="white-text mat-input-element" />
+      </mat-form-field>
+      <div *ngIf="isLecturer" class="white-text">
+        <mat-form-field class="white-frame" appearance="outline" [color]="'accent'">
+          <mat-label>COURSE</mat-label>
+          <input matInput type="text" formControlName="course" id="course" placeholder="course"
+            class="white-text mat-input-element" />
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="button-container">
+      <button mat-raised-button color="accent" (click)="functionLogin()">LOGIN</button>
+      <button mat-raised-button color="accent" (click)="functionLecturerEnter()">LECTURER</button>
+    </div>
+  </div>
+</div> -->
+<div class="container">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-center turquoise-text">LOGIN TO OUR COURSES</h5>
+          <form [formGroup]="loginForm" class="form" novalidate>
+            <div class="mb-3">
+              <label for="userName" class="form-label">USER NAME</label>
+              <input type="text" formControlName="userName" id="userName" placeholder="Username"
+                class="form-control white-text" required>
+              <div *ngIf="loginForm.get('userName')?.invalid && (loginForm.get('userName')?.touched || loginForm.get('userName')?.dirty)" class="invalid-feedback">
+                This field is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">PASSWORD</label>
+              <input type="password" formControlName="password" id="password" placeholder="Password"
+                class="form-control white-text" required>
+              <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)" class="invalid-feedback">
+                This field is required
+              </div>
+            </div>
+
+            <div *ngIf="isLecturer" class="mb-3">
+              <label for="course" class="form-label">COURSE</label>
+              <input type="text" formControlName="course" id="course" placeholder="Course"
+                class="form-control white-text">
+            </div>
+
+            <div class="text-center">
+              <button type="button" class="btn btn-primary" (click)="functionLogin()">LOGIN</button>
+              <button type="button" class="btn btn-primary" (click)="functionLecturerEnter()">LECTURER</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
